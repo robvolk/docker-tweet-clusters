@@ -1,0 +1,19 @@
+## Getting Started
+1. Launch the Docker Quickstart Terminal app
+2. Build & run the image: `docker-compose up`
+
+## Run the tests
+`docker-compose run --rm app bundle exec rspec spec`
+
+
+## Re-build the image
+When you change the Dockerfile or Gemfile, you'll want to rebuild the image like so:
+`docker-compose build`
+
+
+NEXT
+1. see if we can create a "test" container that's always running with test environment settings.  then configure rubytest to execute commands against the running container so it's speedy (using docker's exec command).
+
+
+## TODO
+why's it not updating gemfile.lock?
