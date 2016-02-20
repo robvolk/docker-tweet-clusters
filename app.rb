@@ -4,7 +4,7 @@ require "redis-objects"
 # Bind Sinatra to this IP instead of the default, localhost
 set :bind, '0.0.0.0'
 
-get '/hi' do
+get '/' do
   # Since Docker uses a random IP for the container, we need to use environment variables.
   # To see which environment variables are set, run:
   # docker-compose run app env

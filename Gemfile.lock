@@ -5,6 +5,8 @@ GEM
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
+    rack-test (0.6.3)
+      rack (>= 1.0)
     redis (3.2.2)
     redis-objects (1.2.1)
       redis (>= 3.0.2)
@@ -31,6 +33,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  rack-test
   redis-objects
   rspec
   sinatra
