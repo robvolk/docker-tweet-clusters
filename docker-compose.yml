@@ -1,7 +1,9 @@
-web:
-  build: .
-  volumes:
-    - .:/app
-  ports:
-    - "4567:4567"
-  command: ruby app.rb
+version: '2'
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "4567:4567"
+    command: ruby app.rb
