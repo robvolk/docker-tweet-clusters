@@ -1,6 +1,5 @@
 source "https://rubygems.org"
 
-gem "redis-objects"
 gem "sinatra"
 
 group :test do

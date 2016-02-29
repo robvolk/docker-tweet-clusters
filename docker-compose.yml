@@ -1,7 +1,3 @@
-redis:
-  image: redis
-  ports:
-    - "6379"
 web:
   build: .
   volumes:
@@ -9,5 +5,3 @@ web:
   ports:
     - "4567:4567"
   command: ruby app.rb
-  links:
-    - redis
