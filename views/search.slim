@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    title "#{params[:query]}" Tweets
+  body
+    h1 "#{params[:query]}" Tweets
+
+    ul
+      - @tweets.each do |tweet|
+        li #{tweet.created_at} - #{tweet.text}

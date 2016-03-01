@@ -1,4 +1,5 @@
 require "sinatra"
+require "slim"
 require "twitter"
 
 # Bind Sinatra to this IP instead of the default, localhost
@@ -10,11 +11,6 @@ get '/:query' do |query|
     config.consumer_secret = "RrEFhVohXkRZWKX21c4RVBbK6Se23l4VekSUXpsEMgXOT5fqsV"
   end
 
-  tweets = client.search(query, result_type: "recent", count: 3)
-
-  text = tweets.map do |tweet|
-    "x #{tweet.text}\n"
-  end
-
-  "Found #{tweets.count} tweets\n#{text}"
+  @tweets = client.search(query, result_type: "recent", count: 3)
+  slim :search
 end
