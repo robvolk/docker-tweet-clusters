@@ -8,5 +8,6 @@ ADD Gemfile /app/Gemfile
 ADD Gemfile.lock /app/Gemfile.lock
 RUN bundle install
 
-# even though we're linking the directory as a volume in docker-compose.yml, we still need to add the files to the container
+# we're already sharing the volume with docker-compose, however we'll want to
+# copy the files to the container for when we ship it
 ADD . /app

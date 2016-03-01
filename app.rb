@@ -1,17 +1,20 @@
-require 'sinatra'
-require "redis-objects"
+require "sinatra"
+require "twitter"
 
 # Bind Sinatra to this IP instead of the default, localhost
 set :bind, '0.0.0.0'
 
-get '/' do
-  # Since Docker uses a random IP for the container, we need to use environment variables.
-  # To see which environment variables are set, run:
-  # docker-compose run app env
-  Redis.current = Redis.new(:host => ENV["REDIS_PORT_6379_TCP_ADDR"], :port => ENV["REDIS_PORT_6379_TCP_PORT"])
+get '/:query' do |query|
+  client = Twitter::REST::Client.new do |config|
+    config.consumer_key    = "OaAwMgTM6kWW5JK6FIYRgPc6I"
+    config.consumer_secret = "RrEFhVohXkRZWKX21c4RVBbK6Se23l4VekSUXpsEMgXOT5fqsV"
+  end
 
-  @counter = Redis::Counter.new('counter_name')
-  @counter.increment
+  tweets = client.search(query, result_type: "recent", count: 3)
 
-  "aye, cap'n volk here!  you're mate numero #{@counter.value} to board the ship."
+  text = tweets.map do |tweet|
+    "x #{tweet.text}\n"
+  end
+
+  "Found #{tweets.count} tweets\n#{text}"
 end
