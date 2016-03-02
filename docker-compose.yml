@@ -1,9 +1,16 @@
 version: '2'
 services:
   web:
-    build: .
+    build: ./web
     volumes:
-      - .:/app
+      - ./web:/app
     ports:
       - "4567:4567"
     command: ruby app.rb
+  streamer:
+    build: ./streamer
+    volumes:
+      - ./streamer:/app
+    ports:
+      - "3000:3000"
+    command: node index.js

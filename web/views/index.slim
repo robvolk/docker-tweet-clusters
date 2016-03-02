@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title streamer test
+  body
+    h1 streamer test
+
+    script src="http://192.168.99.100:3000/socket.io/socket.io.js"
+    javascript:
+      var socket = io("http://192.168.99.100:3000");
+      socket.on('ping', function(res) {
+        console.log("received: " + res.msg);
+      });
