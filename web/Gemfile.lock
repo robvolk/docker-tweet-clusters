@@ -1,15 +1,14 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    daemons (1.2.3)
     diff-lcs (1.2.5)
+    eventmachine (1.0.9.1)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
-    redis (3.2.2)
-    redis-objects (1.2.1)
-      redis (>= 3.0.2)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -27,6 +26,14 @@ GEM
       rack (~> 1.5)
       rack-protection (~> 1.4)
       tilt (>= 1.3, < 3)
+    slim (3.0.6)
+      temple (~> 0.7.3)
+      tilt (>= 1.3.3, < 2.1)
+    temple (0.7.6)
+    thin (1.6.4)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0, >= 1.0.4)
+      rack (~> 1.0)
     tilt (2.0.2)
 
 PLATFORMS
@@ -34,9 +41,10 @@ PLATFORMS
 
 DEPENDENCIES
   rack-test
-  redis-objects
   rspec
   sinatra
+  slim
+  thin
 
 BUNDLED WITH
    1.11.2

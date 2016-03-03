@@ -24,8 +24,14 @@ docker-compose run --rm web bundle exec rspec spec
 ```
 
 ## Useful Info
+### Bundle gems
+To bundle gems & update Gemfile.lock:
+```
+docker-compose run web bundle install
+```
+
 ### Re-build the containers
-When you change the Dockerfile or Gemfile, you'll want to rebuild the containers like so:
+When you change the Dockerfile, you'll want to rebuild the containers like so:
 ```
 docker-compose build
 ```
