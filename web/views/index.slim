@@ -5,9 +5,12 @@ html
   body
     h1 streamer test
 
-    script src="http://192.168.99.100:3000/socket.io/socket.io.js"
+    p#tweets
+
+    script src="#{@io_url}/socket.io/socket.io.js"
     javascript:
-      var socket = io("http://192.168.99.100:3000");
-      socket.on('ping', function(res) {
-        console.log("received: " + res.msg);
+      var socket = io("#{@io_url}");
+      socket.on('tweet', function(tweet) {
+        document.getElementById("tweets").innerHTML += tweet.text + "<br/>"
+        console.log("received: " + tweet.text);
       });

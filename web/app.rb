@@ -5,5 +5,6 @@ require "slim"
 set :bind, '0.0.0.0'
 
 get '/' do
+  @io_url = ENV["STREAMER_URL"]
   slim :index
 end

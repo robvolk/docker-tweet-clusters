@@ -2,15 +2,24 @@ version: '2'
 services:
   web:
     build: ./web
+    links:
+      - streamer
     volumes:
       - ./web:/app
     ports:
       - "4567:4567"
     command: ruby app.rb
+    environment:
+      - "STREAMER_URL=http://docker.local:4568"
   streamer:
     build: ./streamer
     volumes:
       - ./streamer:/app
     ports:
-      - "3000:3000"
+      - "4568:4568"
+    environment:
+      - "HTTP_PORT=4568"
+      - "TWITTER_STREAM_FILTER={ \"locations\": \"-122.75,36.8,-121.75,37.8\" }"
+    env_file:
+      - "secret.env"
     command: node index.js
