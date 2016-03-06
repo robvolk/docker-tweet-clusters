@@ -31,6 +31,10 @@ docker-compose run web bundle install # update host Gemfile.lock
 docker-compose build                  # update cached Gemfile.lock on container
 ```
 
+### Add a Node package
+docker-compose run streamer npm install {package} --save
+
+
 ### Re-build the containers
 When you change the Dockerfile, you'll want to rebuild the containers like so:
 ```

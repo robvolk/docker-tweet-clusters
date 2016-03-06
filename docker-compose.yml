@@ -27,7 +27,8 @@ services:
       - "4568:4568"
     environment:
       - "HTTP_PORT=4568"
-      - "TWITTER_STREAM_FILTER={ \"locations\": \"-122.75,36.8,-121.75,37.8\" }"
+      - "TWITTER_STREAM_FILTER={ \"track\": \"bieber\" }"
+      - "WEB_URL=http://web:4567"
     env_file:
       - "secret.env"
     command: node index.js

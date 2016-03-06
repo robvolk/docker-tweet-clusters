@@ -10,11 +10,17 @@ Mongoid.load!("mongoid.yml")
 
 get '/' do
   @io_url = ENV["STREAMER_URL"]
-
   @tweets = Tweet.gt(created_at: Date.today - 7)
+
   slim :index
 end
 
 post '/' do
+  status 400 if params[:tweet].nil?
+
   Tweet.create!(params[:tweet])
+end
+
+get '/kill' do
+  Tweet.delete_all
 end

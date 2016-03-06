@@ -6,8 +6,10 @@ html
     h1 streamer test
 
     h2 Past Tweets
-    - @tweets.each do |tweet|
-      = tweet.text
+    = @tweets.count
+    ul
+      - @tweets.each do |tweet|
+        li = tweet.text
 
     h2 Realtime Tweets
     p#tweets
