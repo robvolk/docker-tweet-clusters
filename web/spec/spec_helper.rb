@@ -10,4 +10,10 @@ module RSpecMixin
   def app() Sinatra::Application end
 end
 
-RSpec.configure { |c| c.include RSpecMixin }
+RSpec.configure do |config|
+  config.include RSpecMixin
+
+  config.before(:each) do
+    Tweet.delete_all
+  end
+end

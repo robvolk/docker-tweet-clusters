@@ -5,6 +5,11 @@ html
   body
     h1 streamer test
 
+    h2 Past Tweets
+    - @tweets.each do |tweet|
+      = tweet.text
+
+    h2 Realtime Tweets
     p#tweets
 
     script src="#{@io_url}/socket.io/socket.io.js"

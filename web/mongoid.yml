@@ -1,0 +1,12 @@
+development:
+  clients:
+    default:
+      database: tweeter
+      hosts:
+        - mongo:27017
+test:
+  clients:
+    default:
+      database: tweeter-test
+      hosts:
+        - mongo:27017

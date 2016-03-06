@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem "thin"
 gem "sinatra"
 gem "slim"
+gem "mongoid"
 
 group :test do
   gem "rspec"

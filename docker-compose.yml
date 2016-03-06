@@ -4,6 +4,7 @@ services:
     build: ./web
     links:
       - streamer
+      - mongo
     volumes:
       - ./web:/app
     ports:
@@ -11,6 +12,13 @@ services:
     command: ruby app.rb
     environment:
       - "STREAMER_URL=http://docker.local:4568"
+  mongo:
+    image: mongo:3.2.3
+    command: "mongod --storageEngine wiredTiger"
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/mongo:/data
   streamer:
     build: ./streamer
     volumes:

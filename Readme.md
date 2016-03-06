@@ -27,7 +27,8 @@ docker-compose run --rm web bundle exec rspec spec
 ### Bundle gems
 To bundle gems & update Gemfile.lock:
 ```
-docker-compose run web bundle install
+docker-compose run web bundle install # update host Gemfile.lock
+docker-compose build                  # update cached Gemfile.lock on container
 ```
 
 ### Re-build the containers
