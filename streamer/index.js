@@ -13,19 +13,19 @@ var client = new Twitter({
 
 function persistTweet(tweet) {
   var request = require('request');
-  request.post({ url: process.env.WEB_URL, form: { tweet: {
-      tweet_id: tweet.id,
-      text: tweet.text,
-      user_screen_name: tweet.user.screen_name,
-      user_name: tweet.user.name,
-      user_image_url: tweet.user.image_url,
-    } }
-  }, function (error, response, body) {
-    if (response.statusCode == 200) {
-      console.log('tweet saved');
+  request.post({ url: process.env.WEB_URL, form: {
+      tweet: {
+        filter: process.env.TWITTER_STREAM_FILTER,
+        tweet_id: tweet.id,
+        text: tweet.text,
+        user_screen_name: tweet.user.screen_name,
+        user_name: tweet.user.name,
+        user_image_url: tweet.user.image_url
+      }
     }
-    else {
-      console.log("Error saving tweet: " + response.statusCode);
+  }, function (error, response, body) {
+    if (response.statusCode != 200) {
+      console.log('error' + response.statusCode);
     }
   });
 }
@@ -33,9 +33,9 @@ function persistTweet(tweet) {
 var filter = JSON.parse(process.env.TWITTER_STREAM_FILTER);
 client.stream('statuses/filter', filter, function(stream) {
   stream.on('data', function(tweet) {
+    console.log(tweet.text);
     io.emit('tweet', tweet);
     persistTweet(tweet);
-    console.log(tweet.text);
   });
 
   stream.on('error', function(error) {
@@ -45,7 +45,7 @@ client.stream('statuses/filter', filter, function(stream) {
 
 
 app.get('/', function(req, res){
-  res.send('Stream Tweets every day....');
+  res.send("Streaming \"" + filter.track + "\" tweets live\n");
 });
 
 http.listen(port, function(){

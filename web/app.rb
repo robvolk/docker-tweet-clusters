@@ -10,7 +10,7 @@ Mongoid.load!("mongoid.yml")
 
 get '/' do
   @io_url = ENV["STREAMER_URL"]
-  @tweets = Tweet.gt(created_at: Date.today - 7)
+  @tweets = Tweet.gt(created_at: Date.today - 7).limit(10)
 
   slim :index
 end
