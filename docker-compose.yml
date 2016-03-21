@@ -12,6 +12,10 @@ services:
     command: ruby app.rb
     environment:
       - "STREAMER_URL=http://docker.local:4568"
+    logging:
+      options:
+        max-size: "2k"
+        max-file: "1"
   mongo:
     image: mongo:3.2.3
     command: "mongod --storageEngine wiredTiger"
@@ -19,6 +23,10 @@ services:
       - "27017:27017"
     volumes:
       - ./data/mongo:/data
+    logging:
+      options:
+        max-size: "2k"
+        max-file: "1"
   streamer:
     build: ./streamer
     volumes:
@@ -32,3 +40,7 @@ services:
     env_file:
       - "secret.env"
     command: node index.js
+    logging:
+      options:
+        max-size: "2k"
+        max-file: "1"
