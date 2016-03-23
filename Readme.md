@@ -1,22 +1,36 @@
-## Getting Started
-1. Launch the Docker Quickstart Terminal app
-2. Build & run the image:
+# Docker Example App: Ruby, RSpec, Node.js, & MongoDB
+Showcases how you can use Docker containers to host an application with
+several different services each written in different languages.
+Docker Compose orchetrates and connects the services on your local dev machine
+so you can start the whole thing with just one command.  It's like magic!
+
+
+Here's what the example application does:
+
+1. Streams Tweets from all the Beliebers from a Node.js + Socket.io service to a Ruby + Sinatra web service
+* Web service persists the tweets in MongoDB
+* Ruby app tested with RSpec
+
+## Installation
+1. Install [Docker Toolbox](https://www.docker.com/products/docker-toolbox)
+* Launch the Docker Quickstart App
+* Build the containers:
   ```
   docker-compose build
-  docker-compose up
   ```
-3. Find Docker's IP:
+* Find Docker's IP:
   ```
   docker-machine ip default
   ```
-4. Find some tweets about "Docker"!
+* Add a host entry to `/etc/hosts`:
   ```
-  curl http://<docker_host>:4567/docker
+  192.168.99.100 docker.local
   ```
-5. Restart the Sinatra app after you make code changes
+* Launch your containers!
   ```
-  docker-compose restart web
+  docker-compose up
   ```
+* Watch Tweets about the Biebs streaming live: http://docker.local:4567
 
 ## Run the tests
 ```
@@ -31,8 +45,10 @@ docker-compose run web bundle install # update host Gemfile.lock
 docker-compose build                  # update cached Gemfile.lock on container
 ```
 
-### Add a Node package
+### Add a Node.js package
+```
 docker-compose run streamer npm install {package} --save
+```
 
 
 ### Re-build the containers
@@ -42,4 +58,6 @@ docker-compose build
 ```
 
 ### Get your container's environment variables
+```
 docker-compose run web env
+```
