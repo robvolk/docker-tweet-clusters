@@ -3,7 +3,6 @@ services:
   web:
     build: ./web
     links:
-      - streamer
       - mongo
     volumes:
       - ./web:/app
@@ -29,6 +28,8 @@ services:
         max-file: "1"
   streamer:
     build: ./streamer
+    links:
+      - web
     volumes:
       - ./streamer:/app
     ports:
