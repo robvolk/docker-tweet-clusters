@@ -4,8 +4,12 @@ several different services each written in different languages.
 Docker Compose orchetrates and connects the services on your local dev machine
 so you can start the whole thing with just one command.  It's like magic!
 
+#### Containers
+* **web**: Ruby + Sinatra web app
+* **streamer**: Node.js + Socket.io web sockets service
+* **mongodb**: data store for web app
 
-Here's what the example application does:
+#### Application Flow
 
 1. Streams Tweets from all the Beliebers from a Node.js + Socket.io service to a Ruby + Sinatra web service
 * Web service persists the tweets in MongoDB
