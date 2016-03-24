@@ -9,13 +9,13 @@ so you can start the whole thing with just one command.  It's like magic!
 * **streamer**: Node.js + Socket.io web sockets service
 * **mongodb**: data store for web app
 
+![Tweet Streamer Container Diagram](https://cloud.githubusercontent.com/assets/1644236/14019246/cc960358-f19f-11e5-8f64-38b63971e5a7.png)
+
 #### Application Flow
 
 1. Streams Tweets from all the Beliebers from a Node.js + Socket.io service to a Ruby + Sinatra web service
 * Web service persists the tweets in MongoDB
 * Ruby app tested with RSpec
-
-![Tweet Streamer Container Diagram](https://cloud.githubusercontent.com/assets/1644236/14019246/cc960358-f19f-11e5-8f64-38b63971e5a7.png)
 
 ## Installation
 1. Install [Docker Toolbox](https://www.docker.com/products/docker-toolbox)
