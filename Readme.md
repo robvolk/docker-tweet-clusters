@@ -15,6 +15,8 @@ so you can start the whole thing with just one command.  It's like magic!
 * Web service persists the tweets in MongoDB
 * Ruby app tested with RSpec
 
+![Tweet Streamer Container Diagram](https://cloud.githubusercontent.com/assets/1644236/14019246/cc960358-f19f-11e5-8f64-38b63971e5a7.png)
+
 ## Installation
 1. Install [Docker Toolbox](https://www.docker.com/products/docker-toolbox)
 * Launch the Docker Quickstart App
